@@ -1,0 +1,103 @@
+/* Base Styles */
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #fdf6e3; /* Warm cream background */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+h1, h2 {
+    color: #d35400; /* Warm orange */
+}
+
+p, li {
+    font-size: 16px;
+}
+
+button {
+    background-color: #e67e22; /* Warm orange */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #d35400;
+}
+
+/* Layout and Alignment */
+#progressionDisplay, #availableChords {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.chord-placeholder, .chord-button {
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Chord Placeholder Styles */
+.chord-placeholder {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 30px; /* Circular placeholders */
+    border: 2px solid #e67e22;
+    background-color: #fef5e7;
+}
+
+/* Chord Button Styles */
+.chord-button {
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 20px; /* Pill-shaped buttons */
+}
+
+/* Table Styles for Chord Functions */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #e67e22;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #fef5e7;
+}
+
+td {
+    background-color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    table {
+        width: 95%;
+    }
+}

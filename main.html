@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ear Training App</title>
+    <!-- Include Tone.js -->
+    <script src="https://cdn.jsdelivr.net/npm/tone@14.8.39/build/Tone.min.js"></script>
+    <!-- Include Tonal from the direct link -->
+    <script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+    <h1>Chord Progression Trainer</h1>
+    <div>
+        <label for="progressionLength">Progression Length:</label>
+        <input type="number" id="progressionLength" name="progressionLength" value="4" min="1" max="8">
+    </div>
+    <div>
+        <input type="checkbox" id="autoContinue" name="autoContinue" checked>
+        <label for="autoContinue">Auto continue to next progression</label>
+    </div>
+    <div>
+        <input type="checkbox" id="useDiatonic" name="useDiatonic" checked>
+        <label for="useDiatonic">Use Diatonic Chords</label>
+    </div>
+    <div>
+        <input type="checkbox" id="addSevens" name="addSevens">
+        <label for="addSevens">Add Sevenths</label>
+    </div>
+
+    <div>
+        <input type="checkbox" id="addBass" name="addBass">
+        <label for="addBass">Add Bass</label>
+    </div>
+
+    
+    <div>
+        <label for="keySelector">Key:</label>
+        <select id="keySelector">
+            <option value="Random">Random</option>
+            <option value="C">C</option>
+            <option value="C#">C# / Db</option>
+            <option value="D">D</option>
+            <option value="D#">D# / Eb</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="F#">F# / Gb</option>
+            <option value="G">G</option>
+            <option value="G#">G# / Ab</option>
+            <option value="A">A</option>
+            <option value="A#">A# / Bb</option>
+            <option value="B">B</option>
+        </select>
+    </div>
+    <div>
+        <label>Playback Style:</label>
+        <input type="radio" id="harmony" name="playbackStyle" value="harmony" checked>
+        <label for="harmony">Harmony</label>
+        <input type="radio" id="arpeggio" name="playbackStyle" value="arpeggio">
+        <label for="arpeggio">Arpeggio</label>
+    </div>
+
+    <div>
+        <input type="checkbox" id="openWithTonic" name="openWithTonic">
+        <label for="openWithTonic">Open with Tonic</label>
+    </div>
+    <div>
+        <input type="checkbox" id="endWithTonic" name="endWithTonic">
+        <label for="endWithTonic">End with Tonic</label>
+    </div>
+    
+    
+    <button id="playButton">Play Next Progression</button>
+    <button id="repeatProgressionButton">Repeat Progression</button>
+
+
+    <div id="progressionDisplay">
+        <!-- Dynamically generated empty squares for each chord in the progression -->
+    </div>
+    <div id="availableChords">
+        <!-- Dynamically generated buttons or elements for each available chord -->
+    </div><br><br><br>
+    
+    <br><br><br><br>
+    <h2>Harmonic Functions and Associated Chords</h2>
+    <table>
+        <tr>
+            <th>TONIC</th>
+            <th>SUB-DOMINANT</th>
+            <th>DOMINANT</th>
+        </tr>
+        <tr>
+            <td>1. I major / major7</td>
+            <td>4. IV major / major7</td>
+            <td>5. V dominant 7</td>
+        </tr>
+        <tr>
+            <td>3. III minor / minor7</td>
+            <td>2. II minor / minor7</td>
+            <td>7. VII dim / half-dim (1-b3-b5-7)</td>
+        </tr>
+        <tr>
+            <td>6. vi minor / minor7</td>
+        </tr>
+    </table>
+<script src="main.js"></script>
+</body>
+</html>
