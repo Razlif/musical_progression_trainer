@@ -25,8 +25,6 @@ Live Link: https://progressiontrainer-jujiberry.pythonanywhere.com/intro.html
 
 ## Installation
 
-This project is built with HTML, CSS, and JavaScript, utilizing the Tone.js library for audio synthesis. To run the app locally:
-
 1. Clone the repository to your local machine.
 
 ```
