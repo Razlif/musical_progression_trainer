@@ -12,10 +12,21 @@
 </head>
 <body>
     <h1>Chord Progression Trainer</h1>
+    <select id="scaleDegrees" name="scaleDegrees" multiple size="7">
+        <option value="1" selected>I (M / maj7)</option>
+        <option value="2" selected>II (m / min7)</option>
+        <option value="3" selected>III (m / min7)</option>
+        <option value="4" selected>IV (M / maj7)</option>
+        <option value="5" selected>V (M / dominant7)</option>
+        <option value="6" selected>VI (m/ min7)</option>
+        <option value="7" selected>VII (Dim / half-dim7)</option>
+    </select>
     <div>
         <label for="progressionLength">Progression Length:</label>
         <input type="number" id="progressionLength" name="progressionLength" value="4" min="1" max="8">
     </div>
+
+    
     <div>
         <input type="checkbox" id="autoContinue" name="autoContinue" checked>
         <label for="autoContinue">Auto continue to next progression</label>
@@ -68,6 +79,7 @@
     <div>
         <input type="checkbox" id="endWithTonic" name="endWithTonic">
         <label for="endWithTonic">End with Tonic</label>
+        <label for="scaleDegrees">Scale Degrees:</label>
     </div>
     
     
@@ -81,29 +93,7 @@
     <div id="availableChords">
         <!-- Dynamically generated buttons or elements for each available chord -->
     </div><br><br><br>
-    
-    <br><br><br><br>
-    <h2>Harmonic Functions and Associated Chords</h2>
-    <table>
-        <tr>
-            <th>TONIC</th>
-            <th>SUB-DOMINANT</th>
-            <th>DOMINANT</th>
-        </tr>
-        <tr>
-            <td>1. I major / major7</td>
-            <td>4. IV major / major7</td>
-            <td>5. V dominant 7</td>
-        </tr>
-        <tr>
-            <td>3. III minor / minor7</td>
-            <td>2. II minor / minor7</td>
-            <td>7. VII dim / half-dim (1-b3-b5-7)</td>
-        </tr>
-        <tr>
-            <td>6. vi minor / minor7</td>
-        </tr>
-    </table>
+
 <script src="main.js"></script>
 </body>
 </html>
