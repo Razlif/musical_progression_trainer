@@ -44,14 +44,18 @@ For any purpose
 ## To Add
 
 1. Hard mode - selection from all possible scale degrees and not only those present in the progression
+(completed)
 
-2. more instruments - currently only has piano sound
+2. Degree selection - choose the scaledegrees to make up the progression
+(completed)
 
-3. non diatonic chord notes - the chords roots will still be diatonic but the chord can have 'color notes' that are not in the scale
+3. more instruments - currently only has piano sound
 
-4. non diatonic chords - adding chords that are not in the scale
+4. non diatonic chord notes - the chords roots will still be diatonic but the chord can have 'color notes' that are not in the scale
 
-5. ability to shift to natural minor key
+5. non diatonic chords - adding chords that are not in the scale
+
+6. ability to shift to natural minor key
 
 
 

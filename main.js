@@ -2,7 +2,7 @@ let currentProgressionIndex = 0; // Tracks the user's current position in the pr
 let currentProgressionSequence = []; // Holds the current progression sequence
 let currentProgression = []; // This will hold the current chord progression
 let globalSynth = null;
-
+let allDegreesProgression = [] // for display of hard mode 
 
 // Mapping of notes to their positions in a chromatic scale starting from C
 const chromaticScale = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
@@ -13,6 +13,7 @@ const userSettings = {
     useDiatonic: true,
     addSevens: false,
     selectedDegrees: [],
+    isHardMode:false,
 };
 
 
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let selectedOptions = document.getElementById('scaleDegrees').selectedOptions;
         let selectedValues = Array.from(selectedOptions).map(option => option.value);
         userSettings.selectedDegrees = selectedValues;
+        userSettings.isHardMode = document.getElementById('hardMode').checked;
 
         console.log("Updated user settings:", userSettings);
 
@@ -81,39 +83,6 @@ function transposeNote(note, interval) {
     return chromaticScale[transposedNoteIndex];
 }
 
-function generateDiatonicProgression2(settings) {
-    const notesInC = ["C", "D", "E", "F", "G", "A", "B"];
-    const chordTypes = settings.addSevens ? ["maj7", "m7", "m7", "maj7", "7", "m7", "m7b5"] : ["maj", "min", "min", "maj", "maj", "min", "dim"];
-
-    // Calculate the interval to transpose from C to the selected key
-    const keyWithoutOctave = settings.key.slice(0, -1); // Remove octave
-    const interval = getIntervalFromCToKey(keyWithoutOctave);
-
-    let progression = [];
-    for (let i = 0; i < settings.progressionLength; i++) {
-        const degreeIndex = Math.floor(Math.random() * notesInC.length);
-        const noteInC = notesInC[degreeIndex];
-        const chordType = chordTypes[degreeIndex];
-
-        // Transpose the note from C to the selected key
-        const transposedNote = transposeNote(noteInC, interval) + settings.key.slice(-1); // Append the original octave
-        // Include the scale degree (1-based index) along with note and chord type
-        progression.push({ note: transposedNote, chordType, degree: degreeIndex + 1 });
-    }
-
-    // Handle "Open with Tonic" and "End with Tonic" options
-    if (userSettings.openWithTonic) {
-        const tonicNote = transposeNote(notesInC[0], interval) + settings.key.slice(-1);
-        progression.unshift({ note: tonicNote, chordType: settings.addSevens ? 'maj7' : 'maj', degree: 1 });
-    }
-    if (userSettings.endWithTonic) {
-        const tonicNote = transposeNote(notesInC[0], interval) + settings.key.slice(-1);
-        progression.push({ note: tonicNote, chordType: settings.addSevens ? 'maj7' : 'maj', degree: 1 });
-    }
-
-    return progression;
-}
-
 function generateDiatonicProgression(settings) {
     const notesInC = ["C", "D", "E", "F", "G", "A", "B"];
     const chordTypes = settings.addSevens ? ["maj7", "m7", "m7", "maj7", "7", "m7", "m7b5"] : ["maj", "min", "min", "maj", "maj", "min", "dim"];
@@ -123,6 +92,7 @@ function generateDiatonicProgression(settings) {
     const interval = getIntervalFromCToKey(keyWithoutOctave);
 
     let progression = [];
+    
     // Ensure there are selected degrees
     if (settings.selectedDegrees && settings.selectedDegrees.length > 0) {
         for (let i = 0; i < settings.progressionLength; i++) {
@@ -139,6 +109,17 @@ function generateDiatonicProgression(settings) {
     } else {
         // Fallback logic if no degrees are selected or an error occurs
         console.error("No scale degrees selected.");
+    }
+
+    // Generate the fake progression for all scale degrees
+    allDegreesProgression = []
+    for (let i = 0; i < notesInC.length; i++) {
+        const noteInC = notesInC[i];
+        const chordType = chordTypes[i];
+
+        // Transpose the note from C to the selected key
+        const transposedNote = transposeNote(noteInC, interval) + settings.key.slice(-1);
+        allDegreesProgression.push({ note: transposedNote, chordType, degree: i + 1 });
     }
 
     // Handle "Open with Tonic" and "End with Tonic" options
@@ -185,18 +166,25 @@ function getChordNotes(rootWithOctave, chordType) {
     });
 }
 
+
+
 function displayAvailableChords(progression) {
     const container = document.getElementById('availableChords');
     container.innerHTML = ''; // Clear existing chords
-    
-    let uniqueChords = Array.from(new Set(progression.map(chord => JSON.stringify(chord))))
+
+    let chordsToDisplay;
+
+    if (userSettings.isHardMode) {
+        // Use predefined chords based on the key and settings
+        chordsToDisplay = allDegreesProgression
+    } else {
+        // Use the unique chords from the progression
+        chordsToDisplay = Array.from(new Set(progression.map(chord => JSON.stringify(chord))))
                             .map(str => JSON.parse(str));
+        shuffleArray(chordsToDisplay);
+    }
 
-    // Shuffle the unique chords to randomize their display order
-    shuffleArray(uniqueChords);
-
-
-    uniqueChords.forEach(({ note, chordType, degree }) => {
+    chordsToDisplay.forEach(({ note, chordType, degree }) => {
         const button = document.createElement('button');
         button.classList.add('chord-button');
         button.textContent = `${degree} ${chordType}`; // Display text
@@ -207,8 +195,8 @@ function displayAvailableChords(progression) {
         });
         container.appendChild(button);
     });
-    
 }
+
 
 async function playChord(rootWithOctave, chordType) {
     // Stop any existing playback
