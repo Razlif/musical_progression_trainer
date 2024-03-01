@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ear Training App - Interval Trainer</title>
+    <!-- Include Tone.js -->
+    <script src="https://cdn.jsdelivr.net/npm/tone@14.8.39/build/Tone.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="intervalTrainer.css">
+</head>
+<body>
+    <h1>Interval Trainer</h1>
+    <div>
+        <select id="intervalSelector" multiple size="15">
+            <option value="1" selected>Minor 2nd</option>
+            <option value="2" selected>Major 2nd</option>
+            <option value="3" selected>Minor 3rd</option>
+            <option value="4" selected>Major 3rd</option>
+            <option value="5" selected>Perfect 4th</option>
+            <option value="6" selected>Augmented 4th / Tritone</option>
+            <option value="7" selected>Perfect 5th</option>
+            <option value="8" selected>Minor 6th</option>
+            <option value="9" selected>Major 6th</option>
+            <option value="10" selected>Minor 7th</option>
+            <option value="11" selected>Major 7th</option>
+            <option value="12" selected>Perfect Octave</option>
+        </select>
+    </div>
+    <div>
+        <input type="checkbox" id="autoContinue" name="autoContinue">
+        <label for="autoContinue">Auto continue to next</label>
+    </div>
+    <div>
+        <label for="directionSelector">Select Direction:</label>
+        <select id="directionSelector">
+            <option value="ascending" selected>Ascending</option>
+            <option value="descending">Descending</option>
+            <option value="random" >Random</option>
+        </select>
+    </div>
+    <div>
+        <label for="keySelector">Key:</label>
+        <select id="keySelector">
+            <option value="C">C</option>
+            <option value="Random" selected>Random</option>
+        </select>
+    </div>
+    
+    
+    <button id="nextButton">Next</button>
+    <button id="repeatRootNoteButton">Repeat Root Note</button>
+    <button id="playButton">Play Interval</button>
+    
+
+    <div id="feedbackDisplay">
+        <!-- Feedback messages for user's attempts will be displayed here -->
+    </div>
+
+<script src="intervalTrainer.js"></script>
+</body>
+</html>
