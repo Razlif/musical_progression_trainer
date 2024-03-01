@@ -103,7 +103,7 @@ td {
 }
 
 /* Scale Degrees Selector Styles */
-#scaleDegrees {
+#scaleDegrees, #intervalSelector {
     width: 25%; /* Adjust width as needed */
     background-color: #fef5e7; /* Light background to match the theme */
     border: 2px solid #e67e22; /* Orange border to match button styles */

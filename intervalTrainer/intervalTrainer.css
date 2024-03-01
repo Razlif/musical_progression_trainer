@@ -1,0 +1,70 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #333;
+}
+
+select, button, input[type="checkbox"] + label {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#feedbackDisplay {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Adjustments for the direction and interval selectors to display inline */
+#directionSelector, #intervalSelector {
+    display: block; /* Change to inline-block if you prefer them side by side */
+}
+
+/* Styling for checkboxes to align with the rest of the form */
+input[type="checkbox"] + label {
+    vertical-align: middle;
+}
+

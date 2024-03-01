@@ -8,12 +8,16 @@ Live Link: https://progressiontrainer-jujiberry.pythonanywhere.com/intro.html
 
 ## Features
 
-- **Diatonic Chords/Notes Support:** Currently supports only diatonic chords / notes (only notes that belong to the scale your are in)
+- **Diatonic Chords/Notes Support:** Currently supports only diatonic chords / notes (only notes that belong to the scale you are in)
 - **Chord Types:** Choose between basic 3-note triads or 4-note 7th chords.
 - **Progression Length:** Customize the length of the chord progression.
 - **Tonic Options:** Add an opening or closing tonic to your progression.
 - **Bass Root:** Add a root bass under the chord (to help hear the scale degree).
 - **Playback Style:** Choose between arpeggio or harmonic playback.
+
+### New Feature: Interval Trainer
+- **Interval Training:** Practice identifying musical intervals to improve your ear training skills.
+
 
 ## How to Use
 
